@@ -46,9 +46,15 @@ function draw() {
   } else {
     push();
     fill(255);
-    textSize(80);
+    textSize(50);
     textAlign(CENTER);
-    text("Drag image here or Paste Image URL below!", 0, (height - 55) / 3, width, height - 55);
+    text(
+      "Drag image here or Paste Image URL below!",
+      0,
+      (height - 55) / 3,
+      width,
+      height - 55
+    );
     pop();
   }
   fill(0);
