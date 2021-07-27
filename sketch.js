@@ -32,10 +32,10 @@ function setup() {
       return e;
     }
   });
-  saveBtn.mouseClicked(() => {
+  saveBtn.mouseClicked(saveMeme);
+  documentBody.drop((file) => {
     img = loadImage(file.data);
   });
-  documentBody.drop(droppedFile);
 }
 
 function draw() {
