@@ -19,20 +19,22 @@ function setup() {
   imgUrlInput.parent(memeUrlInput);
   let imgUrlSubmit = createButton("Upload Image");
   imgUrlSubmit.parent(memeUrlInput);
-  imgUrlSubmit.mousePressed(() => {
-    try {
-      img = loadImage(imgUrlInput.value());
-    } catch (e) {
-      return e;
-    }
-  });
   let pFont = createP("Font Size: ");
   fontSizeSlider = createSlider(10, 100, 55, 2);
   fontSizeSlider.parent(pFont);
   memeName = createInput("MemeName.png");
   memeName.size(130, 20);
   saveBtn = createButton("Save Meme");
-  saveBtn.mouseClicked(saveMeme);
+  imgUrlSubmit.mouseClicked(() => {
+    try {
+      img = loadImage(imgUrlInput.value());
+    } catch (e) {
+      return e;
+    }
+  });
+  saveBtn.mouseClicked(() => {
+    img = loadImage(file.data);
+  });
   documentBody.drop(droppedFile);
 }
 
@@ -61,10 +63,6 @@ function draw() {
   textSize(fontSizeSlider.value());
   textAlign(CENTER);
   text(inputBox.value(), 0, 0, width, 55);
-}
-
-function droppedFile(file) {
-  img = loadImage(file.data);
 }
 
 function saveMeme() {
