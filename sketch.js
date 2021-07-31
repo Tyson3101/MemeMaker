@@ -76,6 +76,15 @@ function canvasClicked() {
   let inputEle = document.createElement("input");
   inputEle.type = "file";
   document.body.append(inputEle);
+  inputEle.addEventListener("change", () => {
+    let file = inputEle.files[0];
+    let reader = new FileReader();
+    reader.addEventListener("load", function () {
+      img = loadImage(reader.result);
+    }, false);
+    reader.readAsDataURL(file);
+    inputEle.remove();
+  });
+  inputEle.style.display = "none";
   inputEle.click();
-  inputEle.remove();
 }
